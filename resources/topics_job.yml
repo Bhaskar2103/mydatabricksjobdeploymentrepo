@@ -1,0 +1,8 @@
+resources:
+  jobs:
+    topics_job:
+      name: topics-job
+      tasks:
+        - task_key: main_task
+          notebook_task:
+            notebook_path: ../src/topics_notebook.py
