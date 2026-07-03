@@ -10,7 +10,7 @@ from datetime import datetime
 from pyspark.sql import functions as F
 
 # COMMAND ----------
-dbutils.widgets.text("catalog", "main", "Catalog Name")
+dbutils.widgets.text("catalog", "workspace", "Catalog Name")
 dbutils.widgets.text("schema", "default", "Schema Name")
 dbutils.widgets.text("run_date", datetime.now().strftime("%Y-%m-%d"), "Run Date")
 
