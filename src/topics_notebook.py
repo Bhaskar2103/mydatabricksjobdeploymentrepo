@@ -39,7 +39,7 @@ try:
     logger.info(f"Row count ingested: {df.count()}")
     display(df)
 
-    # df.write.format("delta").mode("append").saveAsTable(f"{catalog}.{schema}.topics_bronze")
+    df.write.format("delta").mode("append").saveAsTable(f"{catalog}.{schema}.topics_bronze")
 
     logger.info("Job completed successfully")
 
