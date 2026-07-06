@@ -1,7 +1,7 @@
 name: Deploy Databricks Job
 on:
   push:
-    branches: [dev]
+    branches: [main]
 
 jobs:
   deploy:
@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: databricks/setup-cli@main
       - name: Deploy bundle
-        run: databricks bundle deploy -t dev
+        run: databricks bundle deploy -t main
         env:
           DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
           DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
