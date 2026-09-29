@@ -5,7 +5,7 @@ include:
   - resources/*.yml
 
 targets:
-  dev:
+  main:
     mode: development
     workspace:
       host: https://dbc-1fc435be-93a9.cloud.databricks.com
