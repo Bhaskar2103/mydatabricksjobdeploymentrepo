@@ -1,15 +1,16 @@
 # Databricks notebook source
-# COMMAND ----------
 # MAGIC %md
 # MAGIC # Topics Job — Enterprise-style ETL Pattern
 # MAGIC Demonstrates parameterized execution, logging, and a Bronze -> Silver write pattern.
 
 # COMMAND ----------
+
 import logging
 from datetime import datetime
 from pyspark.sql import functions as F
 
 # COMMAND ----------
+
 dbutils.widgets.text("catalog", "workspace", "Catalog Name")
 dbutils.widgets.text("schema", "default", "Schema Name")
 dbutils.widgets.text("run_date", datetime.now().strftime("%Y-%m-%d"), "Run Date")
@@ -19,12 +20,14 @@ schema = dbutils.widgets.get("schema")
 run_date = dbutils.widgets.get("run_date")
 
 # COMMAND ----------
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 logger = logging.getLogger("topics_job")
 
 logger.info(f"Starting topics_job | catalog={catalog} schema={schema} run_date={run_date}")
 
 # COMMAND ----------
+
 try:
     data = [
         (1, "billing", "active", run_date),

@@ -1,21 +1,21 @@
-name: Deploy Databricks Job
+name: Deploy to Dev
+
 on:
   push:
-    branches: [main]
+    branches: [dev]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      DATABRICKS_HOST: ${{ secrets.DEMODATABRICKSHOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKSDEMOJOBSECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: databricks/setup-cli@main
+
       - name: Deploy bundle
-        run: databricks bundle deploy -t main
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: databricks bundle deploy -t dev
+
       - name: Run job
-        run: databricks bundle run topics_job -t main
-        env:
-          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
-          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        run: databricks bundle run topics_job -t dev
