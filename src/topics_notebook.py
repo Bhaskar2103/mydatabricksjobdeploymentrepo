@@ -33,6 +33,7 @@ try:
         (1, "billing", "active", run_date),
         (2, "payments", "active", run_date),
         (3, "support", "inactive", run_date),
+        (4, "users", "active", run_date)
     ]
     columns = ["topic_id", "topic_name", "status", "load_date"]
 
